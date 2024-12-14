@@ -19,7 +19,7 @@ interface IPlayerStore {
 export const usePlayerStore = create<IPlayerStore>()((set) => ({
     isPlaying: false,
     currentMusic: { playlist: null, song: null, songs: [] },
-    volume: 1,
+    volume: 0.2,
     setVolume: (volume) => set({ volume }),
     setIsPlaying: (isPlaying) => set({ isPlaying }),
     setCurrentMusic: (currentMusic) => set({ currentMusic })

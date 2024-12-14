@@ -1,9 +1,7 @@
 ---
-import { playlists } from "@/lib/data";
 import Layout from "@/layouts/Layout.astro";
-import PlayListItemCard from "@/components/PlayListItemCard.astro";
 import { allPlaylists, songs } from "@/lib/data";
-import MusicsTable from "@/components/MusicsTable.astro";
+import { MusicsTable } from "@/components/MusicsTable";
 import { CardPlayButton } from "@/components/CardPlayButton";
 
 const { id } = Astro.params;
@@ -18,7 +16,8 @@ const playlistSongs = songs.filter(
 <Layout title="Spotify Clone">
   <div
     id="playlist-container"
-    class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
+    class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden bg-gradient-to-t from-50% from-zinc-900 via-zinc-900/80"
+    style={`background-color: ${playlist?.color.accent}`}
     transition:name=`playlist ${id} box`
   >
     <header class="flex flex-row gap-8 px-6 mt-12">
@@ -66,7 +65,7 @@ const playlistSongs = songs.filter(
     >
     </div>
     <section class="p-6">
-      <MusicsTable songs={playlistSongs} />
+      <MusicsTable songs={playlistSongs} client:load />
     </section>
   </div>
 </Layout>
